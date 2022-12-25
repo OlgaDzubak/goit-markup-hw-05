@@ -6,8 +6,7 @@
 
 /*Глобальні змінні*/
 :root {
-  --iris : rgb(77, 90, 229);
-  --iris-trasp: rgba(77, 90, 229, 0.9);
+  --iris : #4d5ae5;
   --ocean : #404BBF;
   --navy-blue : #2E2F42;
   --navy-blue-modal:rgba(46, 47, 66, 0.4);
@@ -102,7 +101,10 @@ h1, h2, h3, h4, p {
   
   transition: color var(--transition);
 }
-.nav-menu-link::after{
+.current{
+  color: var(--ocean);
+}
+.current::after{
   position: absolute;
   bottom: 0px;
   display: block;
@@ -110,21 +112,10 @@ h1, h2, h3, h4, p {
   width: 100%;
   content: "";
 
-  transition: background-color var(--transition), border-radius var(--transition); 
-}
-.nav-menu-link:hover::after{
   background-color: var(--ocean);
   border-radius: 2px;
- }
-.nav-menu-link:hover {
-  color: var(--slate);
 }
-.nav-menu-link:focus {
-  color: var(--ocean);
-}
-.nav-menu-link:hover{
-  color: var(--ocean);
-}
+
     /* Styles: Header->Contacts */
 .contacts-list {
   display:flex;
@@ -146,7 +137,7 @@ h1, h2, h3, h4, p {
   /*  Задаємо значення переходу  */
   transition: color var(--transition);
 }
-  .contacts-link:hover {
+.contacts-link:hover {
   color: var(--ocean);
 }
 .contacts-link:focus {
@@ -556,7 +547,7 @@ h1, h2, h3, h4, p {
 
   transition: background-color var(--transition);
 }
- .modal-btn:hover{
+.modal-btn:hover{
   background-color: var(--ocean);
 }
 .modal-btn:focus{
@@ -666,9 +657,8 @@ h1, h2, h3, h4, p {
   letter-spacing: 1.5;
 
   color: var(--cloud);
-  background-color: var(--iris-trasp);
+  background-color: var(--iris);
 
-  /*  Задаємо значення переходу  */
   transition: transform var(--transition);    
 }
 .project-card-link:hover{
