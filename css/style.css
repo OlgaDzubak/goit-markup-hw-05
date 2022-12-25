@@ -6,8 +6,9 @@
 
 /*Глобальні змінні*/
 :root {
-  --iris : #4D5AE5;
-  --iris-active : #404BBF;
+  --iris : rgb(77, 90, 229);
+  --iris-trasp: rgba(77, 90, 229, 0.9);
+  --ocean : #404BBF;
   --navy-blue : #2E2F42;
   --slate : #434455;
   --light-slate : #8E8F99;
@@ -15,10 +16,8 @@
   --cloud : #F4F4FD;
   --herotext-color: #ffff;
   --navy-blue-trans : RGB(46,47,66, 0.7);
-  --ocean : #404BBF;
   --black-transp: rgba(255, 255, 255, 0.1);
   --green : #31D0AA;
-
 }
 
 body {
@@ -55,7 +54,7 @@ h1, h2, h3, h4, p {
   margin-right: auto; 
 }
 
-/* Styles: Header */
+/*---Styles: Header */
 .header .container{
   display: flex;                     /* зробили додатковий клас хедеру, щоб дати йому властивість flex для вирівнювання верхнього меню в один рядок*/
   justify-content: space-between;
@@ -64,13 +63,9 @@ h1, h2, h3, h4, p {
   background: #FFFFFF;
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
-.navigation{
-  display: flex;
-  align-items: center;
-}
 .logo-word-header {
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 28px;
   margin-right: 77px;
 
   font-family: "Raleway", sans-serif;
@@ -81,15 +76,29 @@ h1, h2, h3, h4, p {
 
   color: inherit;
 }
-
+    /* Styles: Header->Navigation string */
+.navigation{
+ display: flex;
+ align-items: center;
+}
 .nav-menu-list {
   display: flex;
   gap: 40px;
 }
+.nav-menu-item:hover::after{
+  /* content: "";
+  height: 4px;
+  display: block;
+  
+  background-color: var(--ocean);
+  background-position: bottom;
+  border-radius: 2px; */
+}
+
 .nav-menu-link {
   display: block;
   padding-top: 24px;
-  padding-bottom: 24px;
+  /* padding-bottom: 24px; */    /* !!! Спитати у ментора як правильно позиціонувати підкреслення при ховері, щоб контент не стрибав*/
 
   font-weight: 700;
   font-size: 16px;
@@ -97,6 +106,22 @@ h1, h2, h3, h4, p {
   letter-spacing: 0.02em;
 
   color: inherit;
+
+  /*  Задаємо значення переходу  */
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
+}
+.nav-menu-link::after{
+  display: block;
+  content: "";
+  height: 4px;
+  margin-top: 24px;    /* !!! Спитати у ментора як правильно позиціонувати підкреслення при ховері, щоб контент не стрибав*/
+}
+.nav-menu-link:active:after{
+  background-color: var(--ocean);
+  border-radius: 2px;
 }
 .nav-menu-link:hover {
   color: var(--slate);
@@ -104,10 +129,7 @@ h1, h2, h3, h4, p {
 .nav-menu-link:focus {
   color: var(--slate);
 }
-.nav-menu-link:active {
-  color: var(--iris);
-}
-
+    /* Styles: Header->Contacts */
 .contacts-list {
   display:flex;
   gap: 40px;
@@ -115,7 +137,7 @@ h1, h2, h3, h4, p {
 .contacts-link {
   display: flex;
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 28px;
   justify-content: center;
   align-items: center;
   
@@ -124,20 +146,23 @@ h1, h2, h3, h4, p {
   letter-spacing: 0.02em;
 
   color: inherit;
+
+  /*  Задаємо значення переходу  */
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
 .contacts-link:hover {
-  color: var(--slate);
+  color: var(-);
 }
 .contacts-link:focus {
   color: var(--slate);
 }
-.contacts-link:active {
-  color: var(--iris);
-}
 
-/* Styles: section Hero */
+/*---Styles: Main Content -> section "Hero" */
 .hero-section {
-  /* background-color: var(--navy-blue);  */
+  background-color: var(--navy-blue); 
   max-width: 1440px;
   background-image: 
     linear-gradient(to right, var(--navy-blue-trans), var(--navy-blue-trans)),
@@ -175,22 +200,28 @@ h1, h2, h3, h4, p {
   border-radius: 4px;
   background: var(--iris);
   color: var(--herotext-color);
+
+  /*  Задаємо значення переходу  */
+  transition-property: background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
 .hero-button:hover {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 .hero-button:focus
 {
-  background: var(--iris-active);
+  background-color: var(--ocean);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 .hero-button:active
 {
-  background: var(--iris-active);
+  background-color: var(--ocean);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
-/*Styles: section Features */
+/*---Styles: Main Content -> section "Features" */
 .features-section {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -257,7 +288,7 @@ h1, h2, h3, h4, p {
   color : var(--slate);
 }
 
-/*Styles: section "What we are doing" */
+/*---Styles: Main Content -> section "What we are doing" */
 .whatwearedoing-section{
   margin-bottom: 120px;
 }
@@ -275,7 +306,7 @@ h1, h2, h3, h4, p {
   gap: 24px;
 }
 
-/*Section: Our team*/
+/*---Styles: Main Content -> section "Our team" */
 .ourteam-section {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -345,6 +376,12 @@ h1, h2, h3, h4, p {
   
   background-color: var(--iris);
   border-radius: 50%;
+
+  /*  Задаємо значення переходу  */
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
 .traling-icons-item-link:hover{
   background-color: var(--ocean);
@@ -358,7 +395,7 @@ h1, h2, h3, h4, p {
   fill: var(--cloud);
 }
 
-/*Section: Customers*/
+/*---Styles: Main Content -> section "Customers" */
 .customers-section{
   margin-bottom: 120px;
 }
@@ -384,12 +421,25 @@ h1, h2, h3, h4, p {
   height: 100%; 
   border: 1px solid var(--light-slate);
   border-radius: 4px;
+
+  /*  Задаємо значення переходу  */
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
 .customers-list-item-link:hover{
   border-color: var(--ocean);
 }
 .customers-list-item-link:focus{
   border-color: var(--ocean);
+}
+.customer-logo-svg{
+    /*  Задаємо значення переходу  */
+    transition-property: fill, stroke;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0;
 }
 .customers-list-item-link:hover .customer-logo-svg{
   fill: var(--ocean);
@@ -404,7 +454,7 @@ h1, h2, h3, h4, p {
   stroke: var(--light-slate);
 }
 
-/*Styles: Footer*/
+/*---Styles: Footer */
 .footer {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -471,12 +521,18 @@ h1, h2, h3, h4, p {
   
   background: var(--black-transp);
   border-radius: 50%;
+
+  /*  Задаємо значення переходу  */
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
 .social-media-footer-item-link:hover{
-  background: var(--green);
+  background-color: var(--green);
 }
 .social-media-footer-item-link:focus{
-  background: var(--green);
+  background-color: var(--green);
 }
 
 
@@ -488,7 +544,7 @@ h1, h2, h3, h4, p {
   padding-bottom: 120px;
 }
 
-/* Styles: Portfolio list of buttons */
+/*---Styles: Portfolio page -> Main Content -> list of buttons */
 .portfolio-buttons-list{
   margin-bottom: 72px;
   display: flex;
@@ -508,21 +564,27 @@ h1, h2, h3, h4, p {
   border: 1px solid var(--cornflower);
   border-radius: 4px;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+
+  /*  Задаємо значення переходу  */
+  transition-property: border, border-color, background-color, color, box-shadow, border-radius;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
 .portfolio-buttons-item:hover {
-  border: none;
-  background: var(--iris);
+  border-color: var(--iris);
+  background-color: var(--iris);
   color: #ffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 } 
 .portfolio-buttons-item:focus {
-  border: none;
-  background: var(--iris);
+  border-color: var(--iris);
+  background-color: var(--iris);
   color: #ffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }  
 .portfolio-buttons-item:active {
-  background: var(--iris-active);
+  background-color: var(--ocean);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }  
@@ -533,7 +595,7 @@ h1, h2, h3, h4, p {
 }
 
 
-/* Styles: Portfolio project cards */
+/*---Styles: Portfolio page -> Main Content -> project cards */
 .project-cards-list{
   display: flex;
   flex-wrap: wrap;
@@ -545,15 +607,52 @@ h1, h2, h3, h4, p {
   background: var(--herotext-color);
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
+.project-card-images{
+  position: relative;
+  overflow: hidden;
+}
 .project-card-link{
   display: block;
   color: var(--navy-blue);
+  
+  transition-property: box-shadow;    
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+  overflow: auto;
+  transform: translate(0, 100%);
+
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1.5;
+
+  color: var(--cloud);
+  background-color: var(--iris-trasp);
+
+  /*  Задаємо значення переходу  */
+  transition-property: transform;    
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
 .project-card-link:hover{
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 .project-card-link:focus{
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+.project-card-link:hover .overlay{
+  transform: translate(0, 0);
+}
+.project-card-link:focus .overlay{
+  transform: translate(0, 0);
 }
 .project-card-content{
   padding: 32px 16px; 
