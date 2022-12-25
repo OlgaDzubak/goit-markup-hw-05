@@ -10,6 +10,7 @@
   --iris-trasp: rgba(77, 90, 229, 0.9);
   --ocean : #404BBF;
   --navy-blue : #2E2F42;
+  --navy-blue-modal:rgba(46, 47, 66, 0.4);
   --slate : #434455;
   --light-slate : #8E8F99;
   --cornflower : #E7E9FC; 
@@ -18,6 +19,7 @@
   --navy-blue-trans : RGB(46,47,66, 0.7);
   --black-transp: rgba(255, 255, 255, 0.1);
   --green : #31D0AA;
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 body {
@@ -85,20 +87,11 @@ h1, h2, h3, h4, p {
   display: flex;
   gap: 40px;
 }
-.nav-menu-item:hover::after{
-  /* content: "";
-  height: 4px;
-  display: block;
-  
-  background-color: var(--ocean);
-  background-position: bottom;
-  border-radius: 2px; */
-}
-
 .nav-menu-link {
+  position: relative;
   display: block;
   padding-top: 24px;
-  /* padding-bottom: 24px; */    /* !!! Спитати у ментора як правильно позиціонувати підкреслення при ховері, щоб контент не стрибав*/
+  padding-bottom: 28px; 
 
   font-weight: 700;
   font-size: 16px;
@@ -106,28 +99,31 @@ h1, h2, h3, h4, p {
   letter-spacing: 0.02em;
 
   color: inherit;
-
-  /*  Задаємо значення переходу  */
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
+  
+  transition: color var(--transition);
 }
 .nav-menu-link::after{
+  position: absolute;
+  bottom: 0px;
   display: block;
-  content: "";
   height: 4px;
-  margin-top: 24px;    /* !!! Спитати у ментора як правильно позиціонувати підкреслення при ховері, щоб контент не стрибав*/
+  width: 100%;
+  content: "";
+
+  transition: background-color var(--transition), border-radius var(--transition); 
 }
-.nav-menu-link:active:after{
+.nav-menu-link:hover::after{
   background-color: var(--ocean);
   border-radius: 2px;
-}
+ }
 .nav-menu-link:hover {
   color: var(--slate);
 }
 .nav-menu-link:focus {
-  color: var(--slate);
+  color: var(--ocean);
+}
+.nav-menu-link:hover{
+  color: var(--ocean);
 }
     /* Styles: Header->Contacts */
 .contacts-list {
@@ -148,16 +144,13 @@ h1, h2, h3, h4, p {
   color: inherit;
 
   /*  Задаємо значення переходу  */
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
+  transition: color var(--transition);
 }
-.contacts-link:hover {
-  color: var(-);
+  .contacts-link:hover {
+  color: var(--ocean);
 }
 .contacts-link:focus {
-  color: var(--slate);
+  color: var(--ocean);
 }
 
 /*---Styles: Main Content -> section "Hero" */
@@ -202,21 +195,17 @@ h1, h2, h3, h4, p {
   color: var(--herotext-color);
 
   /*  Задаємо значення переходу  */
-  transition-property: background-color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
+  transition: background-color var(--transition), box-shadow var(--transition);
 }
 .hero-button:hover {
+  background-color: var(--ocean);
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
-.hero-button:focus
-{
+.hero-button:focus{
   background-color: var(--ocean);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
-.hero-button:active
-{
+.hero-button:active{
   background-color: var(--ocean);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
@@ -378,11 +367,8 @@ h1, h2, h3, h4, p {
   border-radius: 50%;
 
   /*  Задаємо значення переходу  */
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
-}
+  transition: background-color var(--transition);
+ }
 .traling-icons-item-link:hover{
   background-color: var(--ocean);
 }
@@ -423,10 +409,7 @@ h1, h2, h3, h4, p {
   border-radius: 4px;
 
   /*  Задаємо значення переходу  */
-  transition-property: border-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
+  transition: border-color var(--transition);
 }
 .customers-list-item-link:hover{
   border-color: var(--ocean);
@@ -436,10 +419,7 @@ h1, h2, h3, h4, p {
 }
 .customer-logo-svg{
     /*  Задаємо значення переходу  */
-    transition-property: fill, stroke;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 0;
+    transition: fill var(--transition), stroke var(--transition);
 }
 .customers-list-item-link:hover .customer-logo-svg{
   fill: var(--ocean);
@@ -523,10 +503,7 @@ h1, h2, h3, h4, p {
   border-radius: 50%;
 
   /*  Задаємо значення переходу  */
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
+  transition: background-color var(--transition);
 }
 .social-media-footer-item-link:hover{
   background-color: var(--green);
@@ -535,7 +512,68 @@ h1, h2, h3, h4, p {
   background-color: var(--green);
 }
 
+/*---Styles: Modal window */
 
+.backdrop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--navy-blue-modal);
+  z-index: 100;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+.backdrop.is-hidden{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal-window{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 408px;
+  height: 576px;
+  background-color: var(--herotext-color);
+}
+.modal-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--cornflower);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  transition: background-color var(--transition);
+}
+ .modal-btn:hover{
+  background-color: var(--ocean);
+}
+.modal-btn:focus{
+  background-color: var(--ocean);
+}
+.modal-btn:hover .close-icon{
+  fill: var(--herotext-color);
+}
+.modal-btn:focus .close-icon{
+  fill: var(--herotext-color);
+}
+.close-icon{
+  width: 8px;
+  height: 8px;
+
+  transition: fill var(--transition);
+}
 
 /*------------Styles: Portfolio page-----------------*/
 
@@ -566,10 +604,7 @@ h1, h2, h3, h4, p {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 
   /*  Задаємо значення переходу  */
-  transition-property: border, border-color, background-color, color, box-shadow, border-radius;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
+  transition: border var(--transition), border-color var(--transition), background-color var(--transition), color var(--transition), box-shadow var(--transition), border-radius var(--transition);
 }
 .portfolio-buttons-item:hover {
   border-color: var(--iris);
@@ -615,10 +650,7 @@ h1, h2, h3, h4, p {
   display: block;
   color: var(--navy-blue);
   
-  transition-property: box-shadow;    
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
+  transition: box-shadow var(--transition);    
 }
 .overlay{
   position: absolute;
@@ -637,10 +669,7 @@ h1, h2, h3, h4, p {
   background-color: var(--iris-trasp);
 
   /*  Задаємо значення переходу  */
-  transition-property: transform;    
-  transition-duration: 0.5s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0;
+  transition: transform var(--transition);    
 }
 .project-card-link:hover{
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
